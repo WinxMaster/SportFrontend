@@ -2,12 +2,14 @@ import { Link } from "react-router-dom";
 
 function Header() {
     return (
-        <header>
-            <nav>
-                <Link to="/">Home</Link> |
-                <Link to="/list">List</Link>
-            </nav>
-        </header>
+    <header>
+        <div className="logo">UFC TRACKER</div>
+        <nav>
+            <Link to="/">Home</Link>
+            <button>Kämpfe</button>
+            <Link to="/list">List</Link>
+        </nav>
+    </header>
     );
 }
 
