@@ -11,7 +11,6 @@ function App() {
 
     useEffect(() => {
         const saved = localStorage.getItem("policiesAccepted");
-        console.log(saved);
         if (saved === "true") setAccepted(true);
     }, []);
 
