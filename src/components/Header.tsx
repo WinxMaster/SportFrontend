@@ -6,8 +6,8 @@ function Header() {
         <div className="logo">UFC TRACKER</div>
         <nav>
             <Link to="/">Home</Link>
-            <button>Kämpfe</button>
-            <Link to="/list">List</Link>
+            <Link to="/list">Kämpfe</Link>
+            <Link to="/fighters">Kämpfer</Link>
         </nav>
     </header>
     );
