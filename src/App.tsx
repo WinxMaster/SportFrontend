@@ -5,6 +5,7 @@ import PolicyModal from "./components/PolicyModal";
 import Home from "./pages/Home";
 import List from "./pages/List";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 function App() {
     const [accepted, setAccepted] = useState(false);
