@@ -68,3 +68,7 @@ main {
   color: var(--ufc-red);
   font-weight: bold;
 }
+
+.cards-container {
+  grid-template-columns: repeat(3, minmax(250px, 1fr));
+}

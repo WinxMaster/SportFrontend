@@ -49,13 +49,15 @@ export default function Fighters() {
             </select>
 
             <button onClick={handleClick}>Click me</button>
+            <div className={"d-grid gap-4 cards-container"}>
+                {apiData.map((fighter: Fighter, index: number) => (
+                    <div key={index} id={"fight-" + index} className={"card"}>
 
-            {apiData.map((fighter: Fighter, index: number) => (
-                <div key={index} id={"fight-" + index}>
-                    <p>{fighter.name}</p>
-                    <img src={fighter.photo} alt={fighter.name} />
-                </div>
-            ))}
+                        <img className={"card-img-top"} src={fighter.photo} alt={fighter.name} />
+                        <div className={"card-body"}><p>{fighter.name}</p></div>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }
