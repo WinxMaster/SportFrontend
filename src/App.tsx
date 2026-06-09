@@ -4,8 +4,7 @@ import Header from "./components/Header";
 import PolicyModal from "./components/PolicyModal";
 import Home from "./pages/Home";
 import List from "./pages/List";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
+import Fighters from "./pages/Fighters";
 
 function App() {
     const [accepted, setAccepted] = useState(false);
@@ -13,7 +12,6 @@ function App() {
 
     useEffect(() => {
         const saved = localStorage.getItem("policiesAccepted");
-        console.log(saved);
         if (saved === "true") setAccepted(true);
     }, []);
 
@@ -32,6 +30,7 @@ function App() {
                 <Route path="/" element={<Login />} />
                 <Route path="/home" element={<Home />} />
                 <Route path="/list" element={<List />} />
+                <Route path="/fighters" element={<Fighters />} />
             </Routes>
         </BrowserRouter>
     );

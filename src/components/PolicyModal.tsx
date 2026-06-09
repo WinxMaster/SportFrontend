@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 interface PolicyModalProps {
     onAccept: () => void;
@@ -18,6 +18,7 @@ export default function PolicyModal({ onAccept }: PolicyModalProps) {
             zIndex: 1000
         }}>
             <div style={{
+                color: "black",
                 backgroundColor: "white",
                 padding: "2rem",
                 borderRadius: "8px",
@@ -25,7 +26,7 @@ export default function PolicyModal({ onAccept }: PolicyModalProps) {
                 textAlign: "center"
             }}>
                 <h2>Company Policies</h2>
-                <p>The user data component of this website was developed by Adnan in collaboration with Yefrem and ChatGPT.
+                <p>The user data component of this website was developed by Adnan in collaboration with ChatGPT.
                     By accessing or using this website, you acknowledge and agree that you waive any right to bring legal action against us.
                 </p>
                 <label>
