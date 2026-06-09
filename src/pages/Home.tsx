@@ -1,4 +1,35 @@
+import { useEffect, useState } from "react";
+import { apiFetch } from "../api";
+
+type WeightClass = {
+    name: string;
+};
+
 export default function Home() {
+    const [weightClasses, setWeightClasses] = useState<WeightClass[]>([]);
+    const [selectedCategory, setSelectedCategory] = useState("Heavyweight");
+
+    const [fighters, setFighters] = useState([]);
+
+    // Load weight classes (API-driven)
+    useEffect(() => {
+        apiFetch(`/fighters/categories`)
+            .then((data) => {
+                setWeightClasses(data.response || []);
+            })
+            .catch((err) => console.error(err));
+    }, []);
+
+    const handleCategoryClick = (category: string) => {
+        setSelectedCategory(category);
+
+        apiFetch(`/fighters?category=${category}`)
+            .then((data) => {
+                setFighters(data.response || []);
+            })
+            .catch((err) => console.error(err));
+    };
+
     return (
         <div>
             <main>
@@ -8,27 +39,30 @@ export default function Home() {
                 </div>
 
                 <div className="dashboard">
-
-                    <div className="card">
-                        <h2>Nächste Events</h2>
-                        <p><strong>UFC Fight Night</strong></p>
-                        <small>18. März - Sandhagen vs. Nurmagomedov</small>
-                    </div>
-
-                    <div className="card">
-                        <h2>Letzte Ergebnisse</h2>
-                        <p>Main Event: <span className="winner">Pereira</span></p>
-                    </div>
-
                     <div className="card">
                         <h2>Gewichtsklassen</h2>
-                        <button className="weight-btn">Heavyweight</button>
-                        <button className="weight-btn">Light Heavyweight</button>
-                        <button className="weight-btn">Lightweight</button>
-                        <button className="weight-btn">Middleweight</button>
-                        <button className="weight-btn">Welterweight</button>
-                    </div>
 
+                        {weightClasses.map((wc, index) => (
+                            <button
+                                key={index}
+                                className={`weight-btn ${selectedCategory === wc.name ? "active" : ""}`}
+                                onClick={() => handleCategoryClick(wc.name)}
+                            >
+                                {wc.name}
+                            </button>
+                        ))}
+                    </div>
+                </div>
+
+                <div className="card">
+                    <h2>Fighters</h2>
+
+                    {fighters.map((fighter: any, index: number) => (
+                        <div key={index}>
+                            <p>{fighter.name}</p>
+                            <img src={fighter.photo} alt={fighter.name} />
+                        </div>
+                    ))}
                 </div>
             </main>
         </div>
