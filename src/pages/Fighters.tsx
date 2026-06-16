@@ -52,9 +52,15 @@ export default function Fighters() {
             </div>
             <div className={"d-grid gap-4 cards-container"}>
                 {apiData.map((fighter: Fighter, index: number) => (
-                    <div key={index} id={"fight-" + index} className={"card"}>
+                    <div key={index} id={"fight-" + index} className={"card fighter-card"}>
 
-                        <img className={"card-img-top"} src={fighter.photo} alt={fighter.name} />
+                        <img
+                            className={"card-img-top"}
+                            src={fighter.photo}
+                            alt={fighter.name}
+                            onError={(e) => {
+                            e.currentTarget.src = "/images/404_Fighter.png";
+                        }} />
                         <div className={"card-body"}><p>{fighter.name}</p></div>
                     </div>
                 ))}
