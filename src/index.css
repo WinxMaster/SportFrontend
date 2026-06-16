@@ -6,10 +6,13 @@
   --text: #ffffff;
   --text-dim: #a0a0a0;
 }
+html, body, #root {
+  min-height: 100vh;
+}
 
 body {
   font-family: Oswald, sans-serif;
-  background: var(--bg);
+  background-color: var(--bg) !important;
   color: var(--text);
   margin: 0;
 }
@@ -19,6 +22,7 @@ header {
   padding: 20px 5%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   border-bottom: 3px solid var(--ufc-red);
 }
 
@@ -29,39 +33,64 @@ header {
 }
 
 nav a {
-  background: none;
-  border: none;
   color: white;
   margin-left: 20px;
   text-transform: uppercase;
   font-weight: bold;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: var(--ufc-red);
 }
 
 main {
   padding: 20px 5%;
 }
 
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(240px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+
+  background: var(--card-bg);
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
 .card {
   background: var(--card-bg);
   padding: 20px;
-  border-radius: 4px;
+  border-radius: 8px;
   border: 1px solid var(--border);
-  margin-bottom: 10px;
+  transition: transform 0.15s ease, border-color 0.15s ease;
 }
 
-.dashboard {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 20px;
+.card:hover {
+  transform: translateY(-2px);
+  border-color: var(--ufc-red);
 }
 
 .weight-btn {
   width: 100%;
   text-align: left;
-  background: none;
+  background: transparent;
   border: none;
   color: white;
   padding: 10px;
+  cursor: pointer;
+}
+
+.weight-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .winner {
@@ -69,6 +98,63 @@ main {
   font-weight: bold;
 }
 
-.cards-container {
-  grid-template-columns: repeat(3, minmax(250px, 1fr));
+.selectors-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin: 20px;
+}
+
+.selectors-container select {
+  flex: 1;
+  min-width: 220px;
+  background-color: #111;
+  color: white;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+.selectors-container select:focus {
+  background-color: #111;
+  color: white;
+  border-color: var(--ufc-red);
+  box-shadow: none;
+}
+
+.selectors-container button {
+  flex-shrink: 0;
+  background: var(--ufc-red);
+  border: none;
+  color: white;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 4px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.selectors-container button:hover {
+  background: #a80808;
+}
+
+.selectors-container button:active {
+  transform: scale(0.97);
+}
+
+.text-dim {
+  color: var(--text-dim);
+}
+
+.ufc-border {
+  border: 1px solid var(--border);
+}
+
+.ufc-red {
+  color: var(--ufc-red);
 }
