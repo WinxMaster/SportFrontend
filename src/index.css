@@ -7,7 +7,9 @@
   --text-dim: #a0a0a0;
 }
 
-html, body, #root {
+html,
+body,
+#root {
   min-height: 100vh;
 }
 
@@ -41,6 +43,7 @@ nav a {
   text-transform: uppercase;
   font-weight: bold;
   text-decoration: none;
+  transition: color 0.2s ease;
 }
 
 nav a:hover {
@@ -66,24 +69,31 @@ main {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding: 12px;
+
+  padding: 16px;
+  margin: 20px 0;
+
   background: var(--card-bg);
-  border-radius: 8px;
-  margin: 20px;
-  border: none;
+  border-radius: 12px;
+
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
 }
 
 .selectors-container select {
   flex: 1;
   min-width: 220px;
-  background-color: #111;
+
+  background: #111;
   color: white;
+
   border: 1px solid transparent;
-  border-radius: 4px;
+  border-radius: 8px;
+
+  padding: 8px 12px;
 }
 
 .selectors-container select:focus {
-  background-color: #111;
+  background: #111;
   color: white;
   border-color: var(--ufc-red);
   box-shadow: none;
@@ -91,15 +101,22 @@ main {
 
 .selectors-container button {
   flex-shrink: 0;
+
   background: var(--ufc-red);
-  border: none;
   color: white;
-  font-weight: bold;
-  padding: 8px 16px;
-  border-radius: 4px;
-  white-space: nowrap;
+
+  border: none;
+  border-radius: 8px;
+
+  font-weight: 700;
+
+  padding: 10px 18px;
+
   cursor: pointer;
-  transition: background 0.15s ease, transform 0.1s ease;
+
+  transition:
+          background 0.2s ease,
+          transform 0.15s ease;
 }
 
 .selectors-container button:hover {
@@ -120,8 +137,7 @@ main {
   margin-top: 20px;
   background: var(--card-bg);
   padding: 20px;
-  border-radius: 8px;
-  border: none;
+  border-radius: 12px;
 }
 
 /* ================= FIGHTER CARD ================= */
@@ -129,15 +145,16 @@ main {
 .fighter-card {
   position: relative;
 
-  background: #181818;
-  border: none;
-  border-radius: 16px;
   overflow: hidden;
 
+  background: #181818;
+
+  border-radius: 18px;
+
   transition:
-          transform .2s ease,
-          background .2s ease,
-          box-shadow .2s ease;
+          transform 0.25s ease,
+          background 0.25s ease,
+          box-shadow 0.25s ease;
 
   box-shadow:
           0 1px 2px rgba(0,0,0,.2),
@@ -145,24 +162,28 @@ main {
 }
 
 .fighter-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-5px);
+
   background: #202020;
 
   box-shadow:
-          0 10px 30px rgba(0,0,0,.35);
+          0 12px 30px rgba(0,0,0,.35);
 }
 
 .fighter-card::before {
   content: "";
+
   position: absolute;
   inset: 0;
-  border-radius: 16px;
+
   pointer-events: none;
 
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
+  border-radius: 18px;
+
+  box-shadow:
+          inset 0 1px 0 rgba(255,255,255,.04);
 }
 
-/* IMAGE */
 .fighter-card .card-img-top {
   width: 100%;
   height: 340px;
@@ -172,7 +193,7 @@ main {
 
   background: #111;
 
-  transition: transform .35s ease;
+  transition: transform 0.35s ease;
 }
 
 .fighter-card:hover .card-img-top {
@@ -182,98 +203,120 @@ main {
 .fighter-card .card-body {
   padding: 1rem 1.25rem;
 
-  background: #535252; /* <-- lighter so it no longer blends */
-
   text-align: center;
 
-  border-top: 1px solid rgba(255,255,255,0.04);
+  background: #2a2a2a;
+
+  border-top: 1px solid rgba(255,255,255,.05);
 }
 
 .fighter-card .card-body p {
   margin: 0;
 
+  color: white;
+
   font-size: 1rem;
   font-weight: 600;
-  letter-spacing: .02em;
-
-  color: white;
 }
 
-/* ================= FIGHT LIST ================= */
+/* ================= FIGHT LIST (UPDATED TO BANNER STYLE) ================= */
 
 .fights-container {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 14px;
-
-  margin-top: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 24px;
 }
 
-/* fight card */
+/* ================= FIGHT CARD ================= */
+
 .fight-card {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  overflow: hidden;
 
-  background: #181818;
-  border: none;
-  border-radius: 14px;
+  background: linear-gradient(135deg, #181818 0%, #232323 100%);
 
-  padding: 14px 18px;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,.06);
 
   transition:
-          transform .2s ease,
-          background .2s ease,
-          box-shadow .2s ease;
+          transform .25s ease,
+          border-color .25s ease,
+          box-shadow .25s ease;
 
-  box-shadow:
-          0 2px 8px rgba(0,0,0,.25);
+  box-shadow: 0 6px 20px rgba(0,0,0,.25);
 }
 
 .fight-card:hover {
-  transform: translateY(-3px);
-  background: #202020;
+  transform: translateY(-6px);
+
+  border-color: rgba(210,10,10,.35);
 
   box-shadow:
-          0 10px 30px rgba(0,0,0,.35);
+          0 15px 35px rgba(0,0,0,.45);
 }
 
-/* fight image */
+/* ================= BANNER IMAGE (TOP IMAGE FIX) ================= */
+
 .fight-card .card-img-top {
-  width: 60px;
-  height: 60px;
-  object-fit: contain;
-  flex-shrink: 0;
-  background: transparent;
+  width: 100%;
+
+  /* keeps your 1683x935 ratio clean */
+  aspect-ratio: 16 / 9;
+
+  object-fit: cover;
+  object-position: center;
+
+  background: #111;
+
+  transition: transform .35s ease;
 }
 
-/* fight title */
+.fight-card:hover .card-img-top {
+  transform: scale(1.04);
+}
+
+/* ================= CONTENT ================= */
+
+.fight-content {
+  padding: 18px;
+}
+
 .fight-title {
-  flex: 1;
-  margin-left: 16px;
-
-  font-size: 0.95rem;
-  font-weight: 600;
   color: white;
+
+  font-size: 1rem;
+  font-weight: 700;
+
+  line-height: 1.4;
+
+  margin-bottom: 12px;
+
+  min-height: 48px;
 }
 
-/* category pill */
 .fight-category {
-  font-size: 0.75rem;
-  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
 
-  padding: 6px 10px;
+  padding: 6px 12px;
+
   border-radius: 999px;
 
-  background: rgba(255,255,255,0.05);
-  color: var(--text-dim);
+  background: rgba(210,10,10,.15);
+  border: 1px solid rgba(210,10,10,.3);
 
+  color: #ff6a6a;
+
+  font-size: .75rem;
+  font-weight: 700;
+
+  letter-spacing: .08em;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
 }
 
 .fight-card:hover .fight-category {
-  background: rgba(210, 10, 10, 0.12);
+  background: rgba(210,10,10,.25);
+  border-color: rgba(210,10,10,.5);
   color: white;
 }
 
@@ -287,10 +330,11 @@ main {
   color: white;
   padding: 10px;
   cursor: pointer;
+  transition: background .2s ease;
 }
 
 .weight-btn:hover {
-  background: rgba(255,255,255,0.05);
+  background: rgba(255,255,255,.05);
 }
 
 .winner {
@@ -308,4 +352,46 @@ main {
 
 .ufc-red {
   color: var(--ufc-red);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 992px) {
+  .dashboard,
+  .cards-container,
+  .fights-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .selectors-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .dashboard,
+  .cards-container,
+  .fights-container {
+    grid-template-columns: 1fr;
+  }
+
+  .fight-content {
+    padding: 14px;
+  }
+
+  .fight-title {
+    font-size: .9rem;
+  }
+
+  .fight-category {
+    font-size: .7rem;
+  }
+}
+
+.cards-container:empty,
+.fights-container:empty {
+  display: none;
+  padding: 0;
+  margin: 0;
 }
