@@ -4,6 +4,7 @@ import { useState } from "react";
 
 
 type Fighter = {
+    id: number;
     name: string;
     photo: string;
 };
@@ -50,9 +51,9 @@ export default function Fighters() {
                 </select>
                 <button onClick={handleClick}>Click me</button>
             </div>
-            <div className={"d-grid gap-4 cards-container"}>
+            <div className={"d-grid gap-4 cards-container"} >
                 {apiData.map((fighter: Fighter, index: number) => (
-                    <div key={index} id={"fight-" + index} className={"card fighter-card"}>
+                    <a key={index} id={"fighter-" + index} href={"/fighter/" + fighter.id} className={"card fighter-card"}>
 
                         <img
                             className={"card-img-top"}
@@ -62,7 +63,7 @@ export default function Fighters() {
                             e.currentTarget.src = "/images/404_Fighter.png";
                         }} />
                         <div className={"card-body"}><p>{fighter.name}</p></div>
-                    </div>
+                    </a>
                 ))}
             </div>
         </div>

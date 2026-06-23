@@ -395,3 +395,193 @@ main {
   padding: 0;
   margin: 0;
 }
+
+/* ================= FIGHTER DETAIL ================= */
+
+.fighter-detail-page {
+  padding: 30px 5%;
+}
+
+.fighter-detail-card {
+  background: var(--card-bg);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+}
+
+.fighter-header {
+  display: flex;
+  gap: 40px;
+  padding: 40px;
+  background: linear-gradient(
+          135deg,
+          #181818 0%,
+          #232323 100%
+  );
+}
+
+.fighter-image-wrapper {
+  flex-shrink: 0;
+}
+
+.fighter-image {
+  width: 320px;
+  height: 420px;
+  object-fit: cover;
+  border-radius: 16px;
+  background: #111;
+}
+
+.fighter-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.fighter-info h1 {
+  font-size: 3rem;
+  margin: 10px 0;
+  color: white;
+}
+
+.fighter-category {
+  display: inline-block;
+  width: fit-content;
+
+  padding: 8px 14px;
+
+  border-radius: 999px;
+
+  background: rgba(210, 10, 10, 0.15);
+  border: 1px solid rgba(210, 10, 10, 0.4);
+
+  color: #ff6a6a;
+
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.fighter-record {
+  display: flex;
+  gap: 30px;
+  margin-top: 25px;
+}
+
+.fighter-record div {
+  text-align: center;
+}
+
+.fighter-record span {
+  display: block;
+  color: var(--ufc-red);
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.fighter-record p {
+  margin: 5px 0 0;
+  color: var(--text-dim);
+}
+
+.fighter-sections {
+  padding: 30px;
+}
+
+.detail-section {
+  margin-bottom: 40px;
+}
+
+.detail-section h2 {
+  margin-bottom: 20px;
+  color: white;
+  border-left: 4px solid var(--ufc-red);
+  padding-left: 12px;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.details-grid div {
+  background: #181818;
+  padding: 16px;
+  border-radius: 12px;
+}
+
+.details-grid p {
+  margin: 8px 0 0;
+  font-weight: 600;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.stat-card {
+  background: #181818;
+  border-radius: 14px;
+  padding: 20px;
+}
+
+.stat-card h3 {
+  margin-bottom: 18px;
+  color: white;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,.05);
+}
+
+.stat-row strong {
+  color: var(--ufc-red);
+}
+
+@media (max-width: 992px) {
+  .fighter-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .fighter-record {
+    justify-content: center;
+  }
+
+  .details-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .fighter-image {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+  }
+
+  .fighter-info h1 {
+    font-size: 2rem;
+  }
+
+  .details-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.details-grid p, span,
+.stat-card p, span,
+.fighter-info p, span {
+  color: white;
+}

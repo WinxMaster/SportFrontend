@@ -5,6 +5,7 @@ import PolicyModal from "./components/PolicyModal";
 import Home from "./pages/Home";
 import List from "./pages/List";
 import Fighters from "./pages/Fighters";
+import FighterDetail from "./pages/FighterDetail";
 
 function App() {
     const [accepted, setAccepted] = useState(false);
@@ -30,6 +31,8 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/list" element={<List />} />
                 <Route path="/fighters" element={<Fighters />} />
+                <Route path="/fighter/:fighterId" element={<FighterDetail />} />
+                <Route path="/fighter/test" element={<FighterDetail />} />
             </Routes>
         </BrowserRouter>
     );
