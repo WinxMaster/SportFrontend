@@ -7,6 +7,13 @@ type FightResult = {
     winner: string;
 };
 
+type NextEvent = {
+    id: number;
+    title: string;
+    mainFight: string;
+    date: string;
+};
+
 export default function Home() {
     const [categories] = useState<string[]>([
         "Flyweight",
@@ -27,6 +34,33 @@ export default function Home() {
         { id: 5, fighterA: "Jones", fighterB: "Miocic", winner: "Jones" },
     ]);
 
+    const [nextEvents] = useState<NextEvent[]>([
+        {
+            id: 1,
+            title: "UFC Fight Night",
+            mainFight: "Sandhagen vs Nurmagomedov",
+            date: "18. März"
+        },
+        {
+            id: 2,
+            title: "UFC 305",
+            mainFight: "Pereira vs Ankalaev",
+            date: "02. April"
+        },
+        {
+            id: 3,
+            title: "UFC Apex Event",
+            mainFight: "Gaethje vs Fiziev",
+            date: "16. April"
+        },
+        {
+            id: 4,
+            title: "UFC International Fight Week",
+            mainFight: "Adesanya vs Strickland",
+            date: "29. Juni"
+        },
+    ]);
+
     return (
         <div className="home">
             <main>
@@ -39,14 +73,22 @@ export default function Home() {
 
                 <div className="dashboard">
 
-                    {/* NEXT EVENT */}
+                    {/* NEXT EVENTS (multi-variant) */}
                     <div className="card">
-                        <h2>Nächstes Event</h2>
-                        <p><strong>UFC Fight Night</strong></p>
-                        <small>18. März - Sandhagen vs. Nurmagomedov</small>
+                        <h2>Nächste Events</h2>
+
+                        <div className="weight-grid">
+                            {nextEvents.map((event) => (
+                                <div key={event.id} className="weight-btn">
+                                    <strong>{event.title}</strong><br />
+                                    {event.mainFight}<br />
+                                    <small>{event.date}</small>
+                                </div>
+                            ))}
+                        </div>
                     </div>
 
-                    {/* LAST RESULTS (real content) */}
+                    {/* LAST RESULTS */}
                     <div className="card">
                         <h2>Letzte Ergebnisse</h2>
 
