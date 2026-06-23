@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import List from "./pages/List";
 import Fighters from "./pages/Fighters";
 import FighterDetail from "./pages/FighterDetail";
+import FightDetail from "./pages/FightDetail";
 
 function App() {
     const [accepted, setAccepted] = useState(false);
@@ -32,7 +33,7 @@ function App() {
                 <Route path="/list" element={<List />} />
                 <Route path="/fighters" element={<Fighters />} />
                 <Route path="/fighter/:fighterId" element={<FighterDetail />} />
-                <Route path="/fighter/test" element={<FighterDetail />} />
+                <Route path="/fight/test" element={<FightDetail />} />
             </Routes>
         </BrowserRouter>
     );
