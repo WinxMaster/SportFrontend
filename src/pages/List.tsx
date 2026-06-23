@@ -3,33 +3,34 @@ import { useState } from "react";
 
 
 type Fight = {
-    slug: string;
-    category: string;
+slug: string;
+category: string;
 };
 
 
 export default function List() {
-    const [apiData, setApiData] = useState([]);
-    const [season, setSeason] = useState("2023");
-    const [category, setCategory] = useState("all");
+const [apiData, setApiData] = useState([]);
+const [season, setSeason] = useState("2023");
+const [category, setCategory] = useState("all");
 
-    const getSeasonValue = () => season;
-    const getCategoryValue = () => category;
+const getSeasonValue = () => season;
+const getCategoryValue = () => category;
 
-    const handleClick = () => {
-        const selectedSeason = getSeasonValue();
-        const selectedCategory = getCategoryValue();
+const handleClick = () => {
+    const selectedSeason = getSeasonValue();
+    const selectedCategory = getCategoryValue();
 
-        apiFetch(`/fights?season=${selectedSeason}` +
-            (selectedCategory !== "all" ? `&category=${selectedCategory}` : "")
-        ).then((data) => {
-                setApiData(data.response || []);
-            })
-            .catch((err) => console.error(err));
-    };
+    apiFetch(`/fights?season=${selectedSeason}` +
+        (selectedCategory !== "all" ? `&category=${selectedCategory}` : "")
+    ).then((data) => {
+            setApiData(data.response || []);
+        })
+        .catch((err) => console.error(err));
+};
 
-    return (
-        <div>
+return (
+    <div>
+        <div className={"selectors-container"}>
             <select
                 className="form-select form-select-sm"
                 id="season-year-select"
@@ -68,13 +69,28 @@ export default function List() {
             </select>
 
             <button onClick={handleClick}>Click me</button>
-
+        </div>
+        <div className={"d-grid gap-4 fights-container"}>
             {apiData.map((fight: Fight, index: number) => (
-                <div key={index} id={"fight-" + index}>
-                    <p>{fight.slug}</p>
-                    <p>{fight.category}</p>
+                <div className="fight-card" key={index} id={"fight-" + index}>
+                    <img
+                        className="card-img-top"
+                        src="/images/fight_logo.png"
+                        alt={fight.slug}
+                    />
+
+                    <div className="fight-content">
+                        <div className="fight-title">
+                            {fight.slug}
+                        </div>
+
+                        <div className="fight-category">
+                            {fight.category}
+                        </div>
+                    </div>
                 </div>
             ))}
         </div>
-    );
+    </div>
+);
 }
